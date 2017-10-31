@@ -9,7 +9,8 @@ new Vue({
             {id:2, title: 'Item2'},
             {id:3, title: 'Item3'}
         ],
-        cart:[]
+        cart:[],
+        search: ''
     },
     methods: {
         addItem: function(index){
@@ -57,7 +58,7 @@ new Vue({
             }
         },
         onSubmit: function(){
-            console.log('submitted');
+            console.log(this.search);
         }
     },
     filters: {
