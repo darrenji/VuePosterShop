@@ -55,6 +55,9 @@ new Vue({
                     }
                 }
             }
+        },
+        onSubmit: function(){
+            console.log('submitted');
         }
     },
     filters: {
