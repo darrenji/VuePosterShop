@@ -5,8 +5,8 @@ new Vue({
     el: '#app',
     data: {
         total:0,
-        items: [],
-        results:[],
+        items: [],//当前的数据
+        results:[],//所有的数据
         cart:[],
         search: 'anime',
         lastSearch:'',
@@ -66,12 +66,15 @@ new Vue({
                 .then(function(res){
                     this.lastSearch = this.search;
                     this.results = res.data;
-                    this.items = res.data.slice(0,LOAD_NUM);
+                    this.appendItems();
                     this.loading = false;
                 });
         },
         appendItems: function(){
-            console.log('appendItems');
+            if(this.items.length < this.results.length){
+                var append = this.results.slice(this.items.length, this.items.length + LOAD_NUM);
+                this.items = this.items.concat(append);
+            }
         }
     },
     filters: {
