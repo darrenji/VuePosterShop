@@ -58,7 +58,7 @@ new Vue({
             }
         },
         onSubmit: function(){
-            console.log(this.search);
+            console.log(this.$http);
         }
     },
     filters: {
