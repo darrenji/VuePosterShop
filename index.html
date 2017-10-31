@@ -32,7 +32,7 @@
             <ul>
                 <li v-for="item in cart" class="cart-item">
                     <div class="item-title">{{item.title}}</div>
-                    <span class="item-qty">{{item.qty}}</span>
+                    <span class="item-qty">{{item.price}} * {{item.qty}}</span>
                 </li>
             </ul>
             <div v-if="cart.length">
