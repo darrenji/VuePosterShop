@@ -69,6 +69,9 @@ new Vue({
                     this.items = res.data.slice(0,LOAD_NUM);
                     this.loading = false;
                 });
+        },
+        appendItems: function(){
+            console.log('appendItems');
         }
     },
     filters: {
@@ -77,12 +80,15 @@ new Vue({
         }
     },
     mounted: function(){
-        this.onSubmit();
+            this.onSubmit();
+
+            var vueInstance = this;
+            var elem = document.getElementById('product-list-bottom');
+            var watcher = scrollMonitor.create(elem);
+            watcher.enterViewport(function(){
+                //第三方库调用vue实例方法
+                vueInstance.appendItems();
+            });
     }
 });
 
-var elem = document.getElementById('product-list-bottom');
-var watcher = scrollMonitor.create(elem);
-watcher.enterViewport(function(){
-    console.log('Entered viewport');
-});
