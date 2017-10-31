@@ -30,8 +30,8 @@
         <div class="cart">
             <h2>Shopping Cart</h2>
             <ul>
-                <li v-for="item in cart">
-                    {{item.title}}
+                <li v-for="item in cart" class="cart-item">
+                    <div class="item-title">{{item.title}}</div>
                 </li>
             </ul>
             <div>
