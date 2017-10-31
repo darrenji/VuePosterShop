@@ -3,17 +3,37 @@ new Vue({
     data: {
         total:0,
         items: [
-            {title: 'Item1'},
-            {title: 'Item2'},
-            {title: 'Item3'}
+            {id:1, title: 'Item1'},
+            {id:2, title: 'Item2'},
+            {id:3, title: 'Item3'}
         ],
         cart:[]
     },
     methods: {
         addItem: function(index){
             this.total += 9.99;
-            this.cart.push(this.items[index]);
-            console.log(this.cart.length);
+            
+            //要加入的
+            var item = this.items[index];
+            var found = false;
+            
+            //看看购物车
+            for(var i=0;i<this.cart.length;i++){
+                if(this.cart[i].id === item.id){
+                    found = true;
+                    this.cart[i].qty++;
+                }
+            }
+            
+            if(!found){
+                this.cart.push({
+                    id: item.id,
+                    title: item.title,
+                    qty:1
+                });
+            }
+            
+            
         }
     }
 });
